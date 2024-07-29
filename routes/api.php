@@ -10,9 +10,20 @@ switch ($request_method) {
             $id = intval($_GET['id']);
             $taskController->getTask($id);
             break;
+        } else {
+            $taskController->getAllTask();
+            break;
         }
     case 'POST':
         $taskController->createTask();
+        break;
+    case 'PUT':
+        $id = intval($_GET['id']);
+        $taskController->updateTask($id);
+        break;
+    case 'DELETE':
+        $id = intval($_GET['id']);
+        $taskController->deleteTask($id);
         break;
     default:
         header("HTTP/1.0 405 Method Not Allowed");
